@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  sse:
+    build: .
+    container_name: qlik-sse
+    ports:
+      - "50050:50050"
+    volumes:
+      - $PWD/logs:/sse/logs
+    environment:
+      SSE_ALLOWSCRIPT: "false"
+
+networks:
+  sse:
+    name: sse_net
+    driver: bridge
